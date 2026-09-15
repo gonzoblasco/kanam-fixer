@@ -1,13 +1,23 @@
 /**
  * kanam-fixer
  *
- * Slice S1: skeleton only. This package currently ships project setup and
- * tooling, and no accessibility logic.
+ * Assert what a screen reader announces, not the attributes.
  *
- * The announcement assertion API (the check described in the README) is
- * designed for slice S2, where it runs against the virtual screen reader in
- * CI. Nothing here is part of that API yet.
+ * Slice S2: the announcement assertion, running against the virtual screen
+ * reader (the CI plane). The real reader plane lands in S3.
  */
+
+export {
+  type Announcement,
+  type AnnouncementOptions,
+  expectAnnouncement,
+  readAnnouncements,
+} from './expect-announcement.js';
+export {
+  describeMatrix,
+  type ReaderMatrix,
+  VIRTUAL_MATRIX,
+} from './matrix.js';
 
 /** Version of the package, mirrored from package.json. */
 export const version = '0.0.1';

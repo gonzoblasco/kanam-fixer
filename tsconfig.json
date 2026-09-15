@@ -5,9 +5,12 @@
     // mandatory file extension in relative imports), which is why it is used
     // instead of the older "node" or "bundler" values.
     "target": "ES2024",
-    "lib": ["ES2024"],
+    // DOM is required because the announcement assertion walks a DOM node
+    // (`Node`) and, in the virtual plane, runs against jsdom.
+    "lib": ["ES2024", "DOM"],
     "module": "nodenext",
     "moduleResolution": "nodenext",
+    "types": ["node"],
 
     "rootDir": "src",
     "outDir": "dist",
