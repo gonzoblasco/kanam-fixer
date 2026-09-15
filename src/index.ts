@@ -3,8 +3,8 @@
  *
  * Assert what a screen reader announces, not the attributes.
  *
- * Slice S2: the announcement assertion, running against the virtual screen
- * reader (the CI plane). The real reader plane lands in S3.
+ * Slice S3: the same assertion on the real reader plane (VoiceOver on macOS),
+ * behind the same contract as the virtual plane.
  */
 
 export {
@@ -13,11 +13,15 @@ export {
   expectAnnouncement,
   readAnnouncements,
 } from './expect-announcement.js';
+export { describeMatrix, type ReaderMatrix, VIRTUAL_MATRIX } from './matrix.js';
 export {
-  describeMatrix,
-  type ReaderMatrix,
-  VIRTUAL_MATRIX,
-} from './matrix.js';
+  END_OF_DOCUMENT,
+  type ReaderDriver,
+  type RealReaderAvailability,
+  realDriver,
+  realReaderAvailability,
+  virtualDriver,
+} from './readers.js';
 
 /** Version of the package, mirrored from package.json. */
 export const version = '0.0.1';

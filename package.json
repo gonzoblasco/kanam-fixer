@@ -16,6 +16,10 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.13",
+    "@guidepup/guidepup": "^0.34.0",
+    "@guidepup/playwright": "^0.19.1",
+    "@guidepup/setup": "^0.25.3",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^26.5.1",
     "jsdom": "^30.0.1",
     "simple-git-hooks": "^2.14.0",

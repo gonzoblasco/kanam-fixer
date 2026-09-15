@@ -1,26 +1,22 @@
-import { virtual } from '@guidepup/virtual-screen-reader';
-
-import { describeMatrix, type ReaderMatrix, VIRTUAL_MATRIX } from './matrix.js';
+import { describeMatrix, type ReaderMatrix } from './matrix.js';
+import { END_OF_DOCUMENT, type ReaderDriver, virtualDriver } from './readers.js';
 
 /**
- * A hard stop for the traversal loop. The virtual reader walks a finite DOM,
- * so reaching this means something is wrong with the walk itself and the test
+ * A hard stop for the traversal loop. Every reader walks a finite DOM, so
+ * reaching this means something is wrong with the walk itself and the test
  * must fail loudly instead of hanging.
  */
 const MAX_STEPS = 1000;
 
-/** Marks the end of the document in the spoken phrase log. */
-const END_OF_DOCUMENT = 'end of document';
-
 export interface AnnouncementOptions {
-  /** Matrix the assertion is valid against. Defaults to the virtual driver. */
-  matrix?: ReaderMatrix;
+  /** Driver used to read. Defaults to the virtual driver (the CI plane). */
+  driver?: ReaderDriver;
 }
 
-export interface Announcement extends AnnouncementOptions {
+export interface Announcement {
   /** Every phrase the reader spoke while walking the container, in order. */
   phrases: string[];
-  /** Matrix the phrases were observed against. */
+  /** Matrix the phrases were observed against (ADR-0002). */
   matrix: ReaderMatrix;
 }
 
@@ -35,19 +31,19 @@ export async function readAnnouncements(
   container: Node,
   options: AnnouncementOptions = {},
 ): Promise<Announcement> {
-  const matrix = options.matrix ?? VIRTUAL_MATRIX;
+  const driver = options.driver ?? virtualDriver;
 
-  await virtual.start({ container });
+  await driver.start(container);
   try {
     for (let step = 0; step < MAX_STEPS; step += 1) {
-      if ((await virtual.lastSpokenPhrase()) === END_OF_DOCUMENT) {
+      if ((await driver.lastSpokenPhrase()) === END_OF_DOCUMENT) {
         break;
       }
-      await virtual.next();
+      await driver.next();
     }
-    return { phrases: await virtual.spokenPhraseLog(), matrix };
+    return { phrases: await driver.spokenPhraseLog(), matrix: driver.matrix };
   } finally {
-    await virtual.stop();
+    await driver.stop();
   }
 }
 
@@ -55,7 +51,8 @@ export async function readAnnouncements(
  * Asserts what a screen reader announces for the given container.
  *
  * `expected` is matched against the ordered phrases, so an assertion states
- * the announcement as a sequence rather than as a bag of strings.
+ * the announcement as a sequence rather than as a bag of strings. The same
+ * call runs on either plane: only the driver changes.
  */
 export async function expectAnnouncement(
   container: Node,
