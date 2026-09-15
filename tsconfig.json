@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    // Modern ESM Node setup. `nodenext` is the only moduleResolution that
+    // models real Node ESM resolution (including the "exports" field and the
+    // mandatory file extension in relative imports), which is why it is used
+    // instead of the older "node" or "bundler" values.
+    "target": "ES2024",
+    "lib": ["ES2024"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+
+    "rootDir": "src",
+    "outDir": "dist",
+    "noEmit": false,
+    "declaration": true,
+    "sourceMap": true,
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

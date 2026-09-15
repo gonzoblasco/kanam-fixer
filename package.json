@@ -1,0 +1,26 @@
+{
+  "name": "kanam-fixer",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Assert what a screen reader announces, not the attributes: virtual driver in CI, real screen reader locally, same assertion.",
+  "scripts": {
+    "test": "vitest run",
+    "lint": "biome check",
+    "format": "biome format --write",
+    "build": "tsc",
+    "prepare": "simple-git-hooks"
+  },
+  "dependencies": {
+    "@guidepup/virtual-screen-reader": "^0.32.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.13",
+    "simple-git-hooks": "^2.14.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npm run lint && npm test && npm run build"
+  }
+}
