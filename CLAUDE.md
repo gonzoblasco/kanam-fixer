@@ -1,9 +1,9 @@
-# Instrucciones de proyecto para Claude Code (kanam-fixer)
+# Project instructions for Claude Code (kanam-fixer)
 
-Las reglas de este proyecto viven en `./AGENTS.md`, que es la única fuente de verdad. Este archivo no las reemplaza: se dirige a ellas para que Claude Code (que no lee AGENTS.md por defecto) las cargue. Si cambiás una regla, cambiá `AGENTS.md`, no este archivo.
+This project's rules live in `./AGENTS.md`, which is the single source of truth. This file does not replace them: it points to them so Claude Code (which does not read AGENTS.md by default) loads them. To change a rule, edit `AGENTS.md`, not this file.
 
 @./AGENTS.md
 
 ---
 
-Además, este proyecto trabaja sobre las reglas globales del workspace (que Claude Code carga del `CLAUDE.md` de la raíz). Si las reglas del proyecto y las globales conflictúan, mandan las del proyecto (más específicas).
+This project also builds on the workspace-global rules (which Claude Code loads from the root `CLAUDE.md`). Where project and global rules conflict, the project rules win (they are more specific).
