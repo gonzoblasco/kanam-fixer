@@ -34,9 +34,11 @@ El anuncio de un lector se trata como una caracteristica de esa combinacion (lec
 
 | Plano | Lector | Version | SO | Estado |
 |---|---|---|---|---|
-| CI (virtual) | `@guidepup/virtual-screen-reader` | la que fije el lockfile | cualquier SO donde corra Node | Activo, cubre S2 |
-| Local (real) | VoiceOver | la instalada en la maquina de desarrollo | macOS | Previsto en S3 |
-| Local (real) | NVDA | - | Windows | Fuera de alcance de 0.0.1 (declarado en el BRIEF) |
+| CI (virtual) | `@guidepup/virtual-screen-reader` | la que fije el lockfile | cualquier SO donde corra Node | **Activo.** Cubre bugs de atributos y composicion (verificado en S2). **No cubre** timing ni derivacion del viewport (verificado en S4). |
+| Local (real) | VoiceOver | la que provea el asset de Guidepup para la version del SO | macOS | **Bloqueado por upstream.** Guidepup 0.34.0 no tiene asset para Darwin 27; su manifest cubre 21-25. Reportado en guidepup/guidepup#149. |
+| Local (real) | NVDA | - | Windows | Fuera de alcance de 0.0.1 (declarado en el BRIEF). |
+
+**Nota sobre la tercera columna del plano real (2026-09-15, resultado de S3 y S4):** la version del lector real **no la elige el proyecto**: la determina el asset que Guidepup publique para la version mayor de Darwin del host. Es una dependencia dura y quedo demostrada, no teorica. El plano virtual, en cambio, corre en cualquier SO. Esta asimetria es la razon por la que S4 concluye que el plano real es el nucleo del producto y el virtual una red barata, no un sustituto.
 
 La columna "Estado" es dinamica: se actualiza por slice del roadmap, no por este ADR. Lo que este ADR fija es que **cualquier** fila nueva entra con su (lector x version x SO) completo, o no entra.
 
