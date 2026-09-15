@@ -91,6 +91,28 @@ export interface RealReaderAvailability {
 }
 
 /**
+ * Flattens an error and its `cause` chain into one line.
+ *
+ * Guidepup signals an unsupported platform as `VoiceOver cannot be started`
+ * with the real reason hidden in a nested `cause` (`macOS version not
+ * supported`). Reporting only the outer message sends the reader down a
+ * permissions rabbit hole, so the whole chain is surfaced here.
+ */
+function describeError(error: unknown): string {
+  const messages: string[] = [];
+  let current: unknown = error;
+
+  for (let depth = 0; depth < 5 && current instanceof Error; depth += 1) {
+    if (current.message && !messages.includes(current.message)) {
+      messages.push(current.message);
+    }
+    current = current.cause;
+  }
+
+  return messages.length > 0 ? messages.join(' | ') : String(error);
+}
+
+/**
  * Whether the real reader can actually be driven on this machine.
  *
  * The check starts and stops the reader once, so a failure here is the same
@@ -112,13 +134,13 @@ export async function realReaderAvailability(): Promise<RealReaderAvailability> 
     } catch (error) {
       return {
         available: false,
-        reason: error instanceof Error ? error.message : String(error),
+        reason: describeError(error),
       };
     }
   } catch (error) {
     return {
       available: false,
-      reason: error instanceof Error ? error.message : String(error),
+      reason: describeError(error),
     };
   }
 }
