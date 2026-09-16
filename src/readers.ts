@@ -98,7 +98,7 @@ export interface RealReaderAvailability {
  * supported`). Reporting only the outer message sends the reader down a
  * permissions rabbit hole, so the whole chain is surfaced here.
  */
-function describeError(error: unknown): string {
+export function describeError(error: unknown): string {
   const messages: string[] = [];
   let current: unknown = error;
 

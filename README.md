@@ -36,6 +36,21 @@ The driver is optional (`{ driver: realDriver }` switches planes). Pass either; 
 
 > **Not published.** The package is `private: true` and is not on npm. The import above is the in-repo path, not an installable dependency. Publishing is a separate decision that this cycle did not take.
 
+## AI agents: the MCP companion server
+
+Agents cannot hear a screen reader, but they can call a tool that returns what a reader announces for a snippet of HTML. The project ships an **MCP companion server** with two tools, over the same assertion contract:
+
+| Tool | What it does |
+|---|---|
+| `read_announcements` | Walks the given HTML with a reader and returns every phrase announced, in order, plus the reader matrix (ADR-0002). |
+| `assert_announcement` | Checks the announced sequence against an expected one; returns `passed`, the expected sequence, what was announced and the matrix. |
+
+```bash
+node dist/mcp-cli.js
+```
+
+The server speaks MCP over stdio: any MCP-aware client (Claude Code, OpenClaw tool gateway) launches it as a subprocess. The virtual plane is the default driver and runs on any host; requesting the real plane where the platform is unsupported returns a structured error with the reason, never a silent fallback. Every result carries the matrix, so an agent knows exactly which reader the announcement is valid against. See [ADR-0003](docs/adr/ADR-0003-mcp-companion-server.md).
+
 ## What the cycle found
 
 Cycle 0.0.1 did not ship features. It tested the bet, and the answer is **partial**. Measured, not assumed:

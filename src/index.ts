@@ -14,6 +14,7 @@ export {
   readAnnouncements,
 } from './expect-announcement.js';
 export { describeMatrix, type ReaderMatrix, VIRTUAL_MATRIX } from './matrix.js';
+export { createKanamFixerServer, type KanamFixerServerInfo } from './mcp-server.js';
 export {
   END_OF_DOCUMENT,
   type ReaderDriver,
