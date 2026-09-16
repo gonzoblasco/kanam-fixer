@@ -18,6 +18,7 @@
     "kanam-fixer-mcp": "dist/mcp-cli.js"
   },
   "description": "Assert what a screen reader announces, not the attributes: virtual driver in CI, real screen reader locally, same assertion.",
+  "license": "MIT",
   "scripts": {
     "test": "vitest run",
     "lint": "biome check",
