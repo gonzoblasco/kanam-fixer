@@ -30,7 +30,7 @@ let connected = false;
 
 describe('kanam-fixer MCP server', () => {
   it('hands out both tools over MCP', async () => {
-    const server = createKanamFixerServer({ name: 'kanam-fixer', version: '0.0.1' });
+    const server = createKanamFixerServer({ name: 'kanam-fixer', version: '0.0.2' });
     const [clientTransport, serverTransport] = InMemoryTransport.createLinkedPair();
 
     await Promise.all([client.connect(clientTransport), server.connect(serverTransport)]);

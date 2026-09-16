@@ -25,4 +25,4 @@ export {
 } from './readers.js';
 
 /** Version of the package, mirrored from package.json. */
-export const version = '0.0.1';
+export const version = '0.0.2';

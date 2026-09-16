@@ -1,8 +1,22 @@
 {
   "name": "kanam-fixer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "kanam-fixer-mcp": "dist/mcp-cli.js"
+  },
   "description": "Assert what a screen reader announces, not the attributes: virtual driver in CI, real screen reader locally, same assertion.",
   "scripts": {
     "test": "vitest run",
