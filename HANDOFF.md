@@ -51,6 +51,8 @@ El ciclo no shippeo features: **probo la apuesta**. El veredicto es **parcial**,
 
 Regla general: **si un error no explica el fallo, buscar el `cause` antes de formular una hipotesis.**
 
+El resto de las trampas medidas de este proyecto (plano virtual y falso verde, fin de recorrido por frase fija, `@guidepup/setup setup` y TCC.db, exclusion de `.knowledge/`, etc.) viven en [`docs/KNOWN-PITFALLS.md`](docs/KNOWN-PITFALLS.md) con greps de deteccion.
+
 ## Decisiones tomadas (2026-09-15)
 
 - **`0.0.2`:** no se abre todavia. El siguiente paso depende de S3, que depende de upstream.
