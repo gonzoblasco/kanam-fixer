@@ -13,7 +13,8 @@
 | S4 - El caso testigo (#4109) | **Completado - NO reproduce** | Commit `5090278`. 8 tests. Hallazgo abajo. |
 | S5 - Cierre del ciclo | **Completado** | Commit `88ca9ff`. README con la evidencia + `HANDOFF.md`. |
 
-**Repo publico:** https://github.com/gonzoblasco/kanam-fixer (`2fc3d0d`). El `.knowledge/` de este proyecto **se versiona en este repo**: `projects/` esta ignorada entera por el workspace, asi que el unico respaldo de estos archivos es el repo del proyecto.
+**Repo publico:** https://github.com/gonzoblasco/kanam-fixer (`2fc3d0d`).
+**Regla:** cada proyecto de `projects/` versiona su `.knowledge/` en su propio repo. `projects/` esta ignorada entera por el workspace, asi que el repo del proyecto es el unico respaldo de estos archivos.
 **Terna:** 17 passed, 4 skipped (los 4 son el plano real, con su causa impresa). Medido 2026-10-28: 22 passed, 4 skipped.
 
 ## S3: workaround probado - el plano real hablo, la suite no estabilizo, se declara la limitacion
