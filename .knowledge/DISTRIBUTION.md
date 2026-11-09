@@ -155,7 +155,7 @@ Repo: https://github.com/gonzoblasco/kanam-fixer
 2. **El repo tiene que existir** (`kanam-fixer` no tiene repo ni en GitHub ni en npm; el nombre esta libre en ambos a la fecha de este documento).
 3. **README escrito con el problema, no con la feature** (lo pide el ROADMAP, slice S1).
 4. **Evidencia real en el README** antes de pedir adopcion: el ROADMAP pide que S4 (el caso testigo) quede documentado como demostracion. Pedir entrada en una lista curada sin evidencia reproducible quema el canal.
-5. **Escanear guiones** (`scripts/check_em_dash.py`) en cualquier texto que salga.
+5. **Sin escaneo obligatorio de guiones:** no estan restringidos (2026-11-09). El script `check_em_dash.py` queda como diagnostico opcional, ya no como paso previo.
 6. **Superficie publica:** PRs a repos de terceros y publicacion en npm/Marketplace requieren **OK explicito de Gonzo**.
 
 ## Leccion que este material deja

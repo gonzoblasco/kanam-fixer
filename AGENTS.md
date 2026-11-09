@@ -1,6 +1,6 @@
 # AGENTS.md - kanam-fixer
 
-Project-specific operating rules. They complement, not replace, the workspace-global rules (which live in `../AGENTS.md` and are applied through the root `CLAUDE.md`): always use the hyphen `-` (never the em dash U+2014 / en dash U+2013), atomic commits in English, mandatory verification before committing.
+Project-specific operating rules. They complement, not replace, the workspace-global rules (which live in `../AGENTS.md` and are applied through the root `CLAUDE.md`): atomic commits in English, mandatory verification before committing. Em dashes and en dashes are not restricted (workspace decision 2026-11-09; ADR-082 retired the hyphen rule).
 
 ## What this project is (one line)
 

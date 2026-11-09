@@ -8,3 +8,6 @@ coverage/
 !.env.example
 
 .DS_Store
+
+# Test runner output
+.vitest/
