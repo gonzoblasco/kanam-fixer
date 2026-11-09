@@ -34,7 +34,7 @@ await expectAnnouncement(container, [
 
 The driver is optional (`{ driver: realDriver }` switches planes). Pass either; the assertion is the same call.
 
-> **Not published.** The package is `private: true` and is not on npm. The import above is the in-repo path, not an installable dependency. Publishing is a separate decision that this cycle did not take.
+> **Published on npm as `kanam-fixer`.** The package is public, not `private: true`. Latest version: `0.0.2`. The import above is the in-repo path; the installable dependency is `npm install kanam-fixer`. See `docs/KNOWN-PITFALLS.md` #7 for why this line was wrong before 2026-11-06.
 
 ## AI agents: the MCP companion server
 

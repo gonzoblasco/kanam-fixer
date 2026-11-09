@@ -109,6 +109,8 @@ grep -E '"private"' projects/kanam-fixer/package.json
 
 **Regla:** antes de afirmar el estado de publicacion, verificar contra el registry (`curl https://registry.npmjs.org/<nombre>`), no contra la documentacion interna. Si el README dice "Not published" y el registry dice 200, **el README esta mal**: corregirlo, no perpetuarlo. La decision de publicar pertenece a Gonzo (regla del workspace: accion publica requiere OK).
 
+**Estado (2026-11-06):** la inconsistencia esta corregida. El README ya declara `Published on npm as kanam-fixer`, latest `0.0.2`. Verificado contra el registry la misma fecha. La regla sigue vigente como chequeo previo a cualquier push.
+
 ## 8. `simple-git-hooks` no se corre antes de que exista `.git`
 
 **Que parece:** paso inocuo del setup.
