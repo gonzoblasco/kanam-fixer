@@ -91,3 +91,21 @@ Los cuatro, verificables:
 ## Nota de metodo
 
 Los slices siguen la convencion del workspace: cada uno termina en un **criterio de salida verificable**, no en "quedo funcionando". El pipeline A/B se aplica con el complexity-scorer: S1 y S5 son de Kanam; S2-S4 se evaluan al arrancar cada uno.
+
+
+## Migrado del HANDOFF (projects/kanam-fixer/HANDOFF.md)
+
+Contenido propio del HANDOFF que vivia solo alla. El HANDOFF ahora es
+el estado de la ultima sesion (ADR-122).
+
+- **`0.0.2`:** no se abre todavia. El siguiente paso depende de S3, que depende de upstream.
+- **npm:** `kanam-fixer` **no se publica** (`private: true`). El paquete viejo `@gonzoblasco/a11y-fixer@0.6.0` queda **publicado a proposito, sin deprecar**.
+- **`a11y-fixer`**: repo archivado. **`a11y-playground`**: archivado (scaffold vacio).
+- **`DISTRIBUTION.md`:** sigue congelado. Esperaba la evidencia de S4 para destrabarse; S4 dio un resultado negativo, asi que **no se destraba**.
+- **Lo primero:** `npm install && npm test`. Deberia dar 17 passed, 4 skipped.
+- **Si Guidepup ya soporta tu macOS:** los 4 skips se convierten en tests reales. Ese es el cierre de S3.
+- **Si vas a tocar `realDriver`:** el contrato esta en `src/readers.ts`. La regla de ADR-0001 es que la API de Guidepup **nunca** se exporta al usuario.
+- **No ejecutar `npx @guidepup/setup setup`**: escribe directo en la base de privacidad del sistema (`TCC.db` via `sqlite3`), con una lista de clientes ajena al proyecto (`sshd`, `bash`, `zsh`, `osascript`, Terminal, System Events, navegadores).
+- **No desactivar SIP.** El maintainer de `setup` reporto (`guidepup/setup#66`) que el marcador solo se escribe con SIP apagado, y que como root falla igual.
+- **No pushear `.knowledge/`** al repo publico: esta excluido via `.git/info/exclude`.
+- **No correr `npx simple-git-hooks` antes de que exista `.git` en un proyecto nuevo**: git resuelve hacia arriba y pisa el hook del workspace.
